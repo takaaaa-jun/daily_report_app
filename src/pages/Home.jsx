@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { PenSquare, ClipboardList } from 'lucide-react';
 
+// トップページ
 export default function Home() {
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>

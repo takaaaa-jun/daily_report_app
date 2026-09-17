@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Save, Clock, MapPin, AlignLeft, Mic } from 'lucide-react';
 
+// 現場名は事前にデータがあるという前提
 const MOCK_SITES = [
   '選択してください',
   '渋谷スクランブルスクエア',
@@ -10,6 +11,7 @@ const MOCK_SITES = [
   '虎ノ門ヒルズ'
 ];
 
+// フォームのデータを持った構造
 export default function Form({ onAddReport }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -19,15 +21,17 @@ export default function Form({ onAddReport }) {
     notes: ''
   });
 
+  // フォームの各入力欄が変更されたときに呼ばれる
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  // フォームの送信ボタンが押されたときに呼ばれる
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.siteName || formData.siteName === '選択してください' || !formData.startTime || !formData.endTime) return;
-    
+
     onAddReport(formData);
     navigate('/daily_report_app/daily-reports');
   };
@@ -94,9 +98,9 @@ export default function Form({ onAddReport }) {
             <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <AlignLeft size={16} /> 特記事項
             </span>
-            <button 
-              type="button" 
-              className="btn btn-secondary" 
+            <button
+              type="button"
+              className="btn btn-secondary"
               style={{ padding: '0.25rem 0.5rem', fontSize: '0.85rem', gap: '0.25rem' }}
               onClick={() => alert('音声入力はモック機能のため現在利用できません。')}
             >

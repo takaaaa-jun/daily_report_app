@@ -19,7 +19,7 @@ export default function DailyReports({ reports }) {
         <Link to="/daily_report_app/home" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', textDecoration: 'none' }}>
           <ArrowLeft size={16} /> トップへ戻る
         </Link>
-        
+
         <Link to="/daily_report_app/form" className="btn" style={{ padding: '0.5rem 1rem' }}>
           新規作成
         </Link>
@@ -31,6 +31,7 @@ export default function DailyReports({ reports }) {
       </div>
 
       <div className="glass-panel" style={{ padding: '0' }}>
+        {/* reportsの要素が一つもない場合 */}
         {reports.length === 0 ? (
           <div style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
             <p style={{ marginBottom: '1rem' }}>まだ提出された日報がありません。</p>
@@ -38,8 +39,9 @@ export default function DailyReports({ reports }) {
               最初の日報を登録する
             </Link>
           </div>
-        ) : (
+        ) : ( // reportsの要素が一つ以上ある場合
           <div>
+            {/* reportsの要素を一つずつ取り出して、report-cardに渡す */}
             {reports.map((report) => (
               <div key={report.id} className="report-card">
                 <div className="report-header">
@@ -52,7 +54,7 @@ export default function DailyReports({ reports }) {
                     {report.status}
                   </span>
                 </div>
-                
+
                 <div className="report-meta">
                   <div className="report-meta-item">
                     <Clock size={14} />

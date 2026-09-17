@@ -20,8 +20,10 @@ function App() {
 
   return (
     <BrowserRouter>
+      {/* ルートの定義 */}
       <Routes>
-        <Route path="/" element={<Navigate to="/daily_report_app/home" replace />} />
+        {/* ルートの定義 */}
+        <Route path="/" element={<Navigate to="/daily_report_app/form" replace />} />
         <Route path="/daily_report_app/home" element={<Home />} />
         <Route path="/daily_report_app/form" element={<Form onAddReport={addReport} />} />
         <Route path="/daily_report_app/daily-reports" element={<DailyReports reports={reports} />} />
